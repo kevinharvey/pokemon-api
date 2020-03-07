@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Pokemon, Attack
+
+
+class AttackInline(admin.TabularInline):
+    model = Attack
+
+
+@admin.register(Pokemon)
+class PokemonAdmin(admin.ModelAdmin):
+    inlines = (AttackInline,)
